@@ -1,0 +1,26 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  sitemap_job:
+    runs-on: ubuntu-latest
+    name: Generate Sitemap
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Generate Sitemap
+        uses: cicirello/generate-sitemap@v1
+        with:
+          base-url-path: https://metaloxgit.github.io/music-records/
+          sitemap-format: xml
+
+      - name: Commit and Push Sitemap
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-generate sitemap.xml"
