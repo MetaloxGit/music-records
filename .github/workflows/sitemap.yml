@@ -10,6 +10,8 @@ jobs:
   sitemap_job:
     runs-on: ubuntu-latest
     name: Generate Sitemap
+    permissions:
+      contents: write
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
